@@ -8,47 +8,6 @@
       ]
     },
     {
-      "type": "aws:cdk:error",
-      "data": "Could not assume role in target account using current credentials (which are for account 691427020199) Roles may not be assumed by root accounts. . Please make sure that this role exists in the account. If it doesn't exist, (re)-bootstrap the environment with the right '--trust', using the latest version of the CDK CLI.",
-      "trace": [
-        "Annotations.addMessage (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2399)",
-        "Annotations.addError (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1631)",
-        "Annotations._addTrackableError (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1730)",
-        "Function.getValue (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\context-provider.js:2:1886)",
-        "PlatformStack.get availabilityZones [as availabilityZones] (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\stack.js:1:12163)",
-        "new Vpc2 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:18274)",
-        "new Vpc2 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\prop-injectable.js:1:855)",
-        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
-        "Object.<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
-        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
-        "Module.m._compile (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\index.ts:1618:23)",
-        "node:internal/modules/cjs/loader:1708:10",
-        "Object.require.extensions.<computed> [as .ts] (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\index.ts:1621:12)",
-        "Module.load (node:internal/modules/cjs/loader:1318:32)",
-        "Function._load (node:internal/modules/cjs/loader:1128:12)",
-        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
-        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
-        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
-        "phase4 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:649:14)",
-        "bootstrap (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:95:10)",
-        "main (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:55:10)",
-        "Object.<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:800:3)",
-        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
-        "Object.<anonymous> (node:internal/modules/cjs/loader:1708:10)",
-        "Module.load (node:internal/modules/cjs/loader:1318:32)",
-        "Function._load (node:internal/modules/cjs/loader:1128:12)",
-        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
-        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
-        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
-        "node:internal/main/run_main_module:36:49"
-      ]
-    },
-    {
-      "type": "aws:cdk:error-code",
-      "data": "ContextProviderError"
-    },
-    {
       "type": "aws:cdk:stack-tags",
       "data": [
         {
@@ -110,7 +69,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:52:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:54:5)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -167,7 +126,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:20:5)",
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:21:5)",
         "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
@@ -182,7 +141,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:29:5)",
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:30:5)",
         "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
@@ -212,7 +171,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:11:19)",
+        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:12:19)",
         "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:39:27)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
@@ -244,7 +203,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Role2 in aws-cdk-lib...",
-        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:12:18)",
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:13:18)",
         "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
@@ -261,7 +220,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -277,7 +236,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -293,7 +252,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -309,7 +268,7 @@
       "data": [
         "...new LogGroup2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:38:26)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -325,7 +284,7 @@
       "data": [
         "...new Role2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:42:25)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -341,7 +300,7 @@
       "data": [
         "...new FlowLog2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:48:5)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -356,7 +315,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:11:19)",
+        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:12:19)",
         "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:39:27)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
@@ -375,7 +334,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -393,7 +352,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -411,7 +370,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -429,7 +388,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -445,7 +404,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -461,7 +420,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -479,7 +438,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -497,7 +456,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -515,7 +474,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -533,7 +492,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -551,7 +510,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -569,7 +528,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -587,7 +546,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -603,7 +562,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -621,7 +580,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -639,7 +598,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -657,7 +616,7 @@
         "Array.forEach (:)",
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -673,7 +632,7 @@
       "data": [
         "...new Vpc2 in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -689,7 +648,7 @@
       "data": [
         "...WrappedClass.addGatewayEndpoint in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:59:14)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -705,7 +664,7 @@
       "data": [
         "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:63:14)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -721,7 +680,7 @@
       "data": [
         "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:67:14)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -737,7 +696,7 @@
       "data": [
         "...WrappedClass.grantWrite in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:46:18)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -753,7 +712,7 @@
       "data": [
         "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:63:14)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]
@@ -769,7 +728,7 @@
       "data": [
         "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
         "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:67:14)",
-        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:49:25)",
         "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
         "...node internals, ts-node, ts-node, ts-node..."
       ]

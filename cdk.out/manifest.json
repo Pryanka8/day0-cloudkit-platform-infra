@@ -11,7 +11,7 @@
     },
     "Day0CloudKit-stack": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://111111111111/us-east-1",
+      "environment": "aws://691427020199/ap-south-1",
       "properties": {
         "templateFile": "Day0CloudKit-stack.template.json",
         "terminationProtection": false,
@@ -23,16 +23,16 @@
           "Project": "Day0CloudKit"
         },
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-deploy-role-111111111111-us-east-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-cfn-exec-role-111111111111-us-east-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-111111111111-us-east-1/983e9a34c6de1dd57720aed9d0933eb201dbc982f04dafb4c32252bea8bf2f17.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::691427020199:role/cdk-hnb659fds-deploy-role-691427020199-ap-south-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::691427020199:role/cdk-hnb659fds-cfn-exec-role-691427020199-ap-south-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-691427020199-ap-south-1/889d87ca4bc3378ae8ac27ea67aacd4e77a2afa833256ec4b5e55570d2134360.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "Day0CloudKit-stack.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-lookup-role-111111111111-us-east-1",
+          "arn": "arn:${AWS::Partition}:iam::691427020199:role/cdk-hnb659fds-lookup-role-691427020199-ap-south-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -503,21 +503,5 @@
       }
     }
   },
-  "missing": [
-    {
-      "key": "availability-zones:account=111111111111:region=us-east-1",
-      "provider": "availability-zones",
-      "props": {
-        "dummyValue": [
-          "dummy1a",
-          "dummy1b",
-          "dummy1c"
-        ],
-        "account": "111111111111",
-        "region": "us-east-1",
-        "lookupRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-lookup-role-111111111111-us-east-1"
-      }
-    }
-  ],
   "minimumCliVersion": "2.1121.0"
 }

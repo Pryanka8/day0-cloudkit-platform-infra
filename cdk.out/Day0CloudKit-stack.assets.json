@@ -1,18 +1,18 @@
 {
   "version": "53.0.0",
   "files": {
-    "983e9a34c6de1dd57720aed9d0933eb201dbc982f04dafb4c32252bea8bf2f17": {
+    "889d87ca4bc3378ae8ac27ea67aacd4e77a2afa833256ec4b5e55570d2134360": {
       "displayName": "Day0CloudKit-stack Template",
       "source": {
         "path": "Day0CloudKit-stack.template.json",
         "packaging": "file"
       },
       "destinations": {
-        "111111111111-us-east-1-fa3ec6f3": {
-          "bucketName": "cdk-hnb659fds-assets-111111111111-us-east-1",
-          "objectKey": "983e9a34c6de1dd57720aed9d0933eb201dbc982f04dafb4c32252bea8bf2f17.json",
-          "region": "us-east-1",
-          "assumeRoleArn": "arn:${AWS::Partition}:iam::111111111111:role/cdk-hnb659fds-file-publishing-role-111111111111-us-east-1"
+        "691427020199-ap-south-1-3691fc66": {
+          "bucketName": "cdk-hnb659fds-assets-691427020199-ap-south-1",
+          "objectKey": "889d87ca4bc3378ae8ac27ea67aacd4e77a2afa833256ec4b5e55570d2134360.json",
+          "region": "ap-south-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::691427020199:role/cdk-hnb659fds-file-publishing-role-691427020199-ap-south-1"
         }
       }
     }

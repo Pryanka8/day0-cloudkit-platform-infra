@@ -2,10 +2,10 @@ import { EnvironmentConfig } from "./types";
 
 export const config: EnvironmentConfig = {
   environment: "dev",
-  owner: "xxxxx", // owner email for budget alerts and tagging
+  owner: "XXXXX", // owner email for budget alerts and tagging
   project: "Day0CloudKit",
-  accountId: "XXXXXXXXXXXX", // AWS Account ID
-  region: "us-east-1",
+  accountId: "XXXX", // AWS Account ID
+  region: "XXXX", // AWS Region
 
   networking: {
     cidr: "10.0.0.0/16",

@@ -4,7 +4,7 @@
    "Value": "dev"
   },
   "Region": {
-   "Value": "us-east-1"
+   "Value": "ap-south-1"
   },
   "VpcId": {
    "Value": {
@@ -148,6 +148,43 @@
        ]
       },
       {
+       "Action": [
+        "s3:GetBucketAcl",
+        "s3:PutObject"
+       ],
+       "Condition": {
+        "StringEquals": {
+         "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "config.amazonaws.com"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CentralLoggingBucketAuditLogsBucket6462B59F",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "CentralLoggingBucketAuditLogsBucket6462B59F",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
        "Action": "s3:GetBucketAcl",
        "Effect": "Allow",
        "Principal": {
@@ -181,7 +218,7 @@
             "Arn"
            ]
           },
-          "/AWSLogs/111111111111/*"
+          "/AWSLogs/691427020199/*"
          ]
         ]
        }
@@ -317,7 +354,9 @@
   "ConfigBaselineDeliveryChannelEF3301F3": {
    "Type": "AWS::Config::DeliveryChannel",
    "Properties": {
-    "S3BucketName": "aws-config-111111111111"
+    "S3BucketName": {
+     "Ref": "CentralLoggingBucketAuditLogsBucket6462B59F"
+    }
    },
    "Metadata": {
     "aws:cdk:path": "Day0CloudKit-stack/ConfigBaseline/DeliveryChannel"
@@ -364,7 +403,7 @@
   "PlatformVpcpublicSubnet1Subnet18547395": {
    "Type": "AWS::EC2::Subnet",
    "Properties": {
-    "AvailabilityZone": "dummy1a",
+    "AvailabilityZone": "ap-south-1a",
     "CidrBlock": "10.0.0.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -563,7 +602,7 @@
   "PlatformVpcpublicSubnet2Subnet2ABB7823": {
    "Type": "AWS::EC2::Subnet",
    "Properties": {
-    "AvailabilityZone": "dummy1b",
+    "AvailabilityZone": "ap-south-1b",
     "CidrBlock": "10.0.1.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -680,7 +719,7 @@
   "PlatformVpcprivateSubnet1Subnet958F3409": {
    "Type": "AWS::EC2::Subnet",
    "Properties": {
-    "AvailabilityZone": "dummy1a",
+    "AvailabilityZone": "ap-south-1a",
     "CidrBlock": "10.0.2.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -794,7 +833,7 @@
   "PlatformVpcprivateSubnet2Subnet12851D88": {
    "Type": "AWS::EC2::Subnet",
    "Properties": {
-    "AvailabilityZone": "dummy1b",
+    "AvailabilityZone": "ap-south-1b",
     "CidrBlock": "10.0.3.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -1102,7 +1141,7 @@
       ]
      }
     ],
-    "ServiceName": "com.amazonaws.us-east-1.logs",
+    "ServiceName": "com.amazonaws.ap-south-1.logs",
     "SubnetIds": [
      {
       "Ref": "PlatformVpcprivateSubnet1Subnet958F3409"
@@ -1231,7 +1270,7 @@
       ]
      }
     ],
-    "ServiceName": "com.amazonaws.us-east-1.secretsmanager",
+    "ServiceName": "com.amazonaws.ap-south-1.secretsmanager",
     "SubnetIds": [
      {
       "Ref": "PlatformVpcprivateSubnet1Subnet958F3409"
