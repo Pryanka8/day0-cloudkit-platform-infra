@@ -1,0 +1,1479 @@
+{
+ "Outputs": {
+  "EnvironmentName": {
+   "Value": "dev"
+  },
+  "Region": {
+   "Value": "us-east-1"
+  },
+  "VpcId": {
+   "Value": {
+    "Ref": "PlatformVpcBDB22E16"
+   }
+  }
+ },
+ "Resources": {
+  "MonthlyBudgetAlertMonthlyBudget57FF2E37": {
+   "Type": "AWS::Budgets::Budget",
+   "Properties": {
+    "Budget": {
+     "BudgetLimit": {
+      "Amount": 50,
+      "Unit": "USD"
+     },
+     "BudgetType": "COST",
+     "TimeUnit": "MONTHLY"
+    },
+    "NotificationsWithSubscribers": [
+     {
+      "Notification": {
+       "ComparisonOperator": "GREATER_THAN",
+       "NotificationType": "ACTUAL",
+       "Threshold": 80
+      },
+      "Subscribers": [
+       {
+        "Address": "pkapant4@gmail.com",
+        "SubscriptionType": "EMAIL"
+       }
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/MonthlyBudgetAlert/MonthlyBudget"
+   }
+  },
+  "CentralLoggingBucketAuditLogsBucket6462B59F": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "BucketEncryption": {
+     "ServerSideEncryptionConfiguration": [
+      {
+       "ServerSideEncryptionByDefault": {
+        "SSEAlgorithm": "AES256"
+       }
+      }
+     ]
+    },
+    "LifecycleConfiguration": {
+     "Rules": [
+      {
+       "ExpirationInDays": 365,
+       "NoncurrentVersionExpiration": {
+        "NoncurrentDays": 90
+       },
+       "Status": "Enabled"
+      }
+     ]
+    },
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "BlockPublicPolicy": true,
+     "IgnorePublicAcls": true,
+     "RestrictPublicBuckets": true
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VersioningConfiguration": {
+     "Status": "Enabled"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/CentralLoggingBucket/AuditLogsBucket/Resource"
+   }
+  },
+  "CentralLoggingBucketAuditLogsBucketPolicyE5927FBA": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "CentralLoggingBucketAuditLogsBucket6462B59F"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:*",
+       "Condition": {
+        "Bool": {
+         "aws:SecureTransport": "false"
+        }
+       },
+       "Effect": "Deny",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "CentralLoggingBucketAuditLogsBucket6462B59F",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "CentralLoggingBucketAuditLogsBucket6462B59F",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "s3:GetBucketAcl",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+       },
+       "Resource": {
+        "Fn::GetAtt": [
+         "CentralLoggingBucketAuditLogsBucket6462B59F",
+         "Arn"
+        ]
+       }
+      },
+      {
+       "Action": "s3:PutObject",
+       "Condition": {
+        "StringEquals": {
+         "s3:x-amz-acl": "bucket-owner-full-control"
+        }
+       },
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "cloudtrail.amazonaws.com"
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "CentralLoggingBucketAuditLogsBucket6462B59F",
+            "Arn"
+           ]
+          },
+          "/AWSLogs/111111111111/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/CentralLoggingBucket/AuditLogsBucket/Policy/Resource"
+   }
+  },
+  "CloudTrailBaselineOrganizationTrailC762AC9E": {
+   "Type": "AWS::CloudTrail::Trail",
+   "Properties": {
+    "EnableLogFileValidation": true,
+    "EventSelectors": [
+     {
+      "IncludeManagementEvents": true,
+      "ReadWriteType": "All"
+     }
+    ],
+    "IncludeGlobalServiceEvents": true,
+    "IsLogging": true,
+    "IsMultiRegionTrail": true,
+    "S3BucketName": {
+     "Ref": "CentralLoggingBucketAuditLogsBucket6462B59F"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "DependsOn": [
+    "CentralLoggingBucketAuditLogsBucketPolicyE5927FBA"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/CloudTrailBaseline/OrganizationTrail/Resource"
+   }
+  },
+  "ConfigBaselineConfigRoleFF7DC6F6": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "config.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWS_ConfigRole"
+       ]
+      ]
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/ConfigBaseline/ConfigRole/Resource"
+   }
+  },
+  "ConfigBaselineConfigurationRecorderE2CDCF31": {
+   "Type": "AWS::Config::ConfigurationRecorder",
+   "Properties": {
+    "RecordingGroup": {
+     "AllSupported": true,
+     "IncludeGlobalResourceTypes": true
+    },
+    "RoleARN": {
+     "Fn::GetAtt": [
+      "ConfigBaselineConfigRoleFF7DC6F6",
+      "Arn"
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/ConfigBaseline/ConfigurationRecorder"
+   }
+  },
+  "ConfigBaselineDeliveryChannelEF3301F3": {
+   "Type": "AWS::Config::DeliveryChannel",
+   "Properties": {
+    "S3BucketName": "aws-config-111111111111"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/ConfigBaseline/DeliveryChannel"
+   }
+  },
+  "PlatformVpcBDB22E16": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/Resource"
+   }
+  },
+  "PlatformVpcpublicSubnet1Subnet18547395": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "dummy1a",
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/Subnet"
+   }
+  },
+  "PlatformVpcpublicSubnet1RouteTableBF5FEE70": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/RouteTable"
+   }
+  },
+  "PlatformVpcpublicSubnet1RouteTableAssociation153551D3": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "PlatformVpcpublicSubnet1RouteTableBF5FEE70"
+    },
+    "SubnetId": {
+     "Ref": "PlatformVpcpublicSubnet1Subnet18547395"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/RouteTableAssociation"
+   }
+  },
+  "PlatformVpcpublicSubnet1DefaultRouteBD56DFC4": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "PlatformVpcIGW4C5CFB82"
+    },
+    "RouteTableId": {
+     "Ref": "PlatformVpcpublicSubnet1RouteTableBF5FEE70"
+    }
+   },
+   "DependsOn": [
+    "PlatformVpcVPCGW2BE82C10"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/DefaultRoute"
+   }
+  },
+  "PlatformVpcpublicSubnet1EIP36F023B8": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/EIP"
+   }
+  },
+  "PlatformVpcpublicSubnet1NATGatewayA2FC8EEB": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "PlatformVpcpublicSubnet1EIP36F023B8",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "PlatformVpcpublicSubnet1Subnet18547395"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "DependsOn": [
+    "PlatformVpcpublicSubnet1DefaultRouteBD56DFC4",
+    "PlatformVpcpublicSubnet1RouteTableAssociation153551D3"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/NATGateway"
+   }
+  },
+  "PlatformVpcpublicSubnet2Subnet2ABB7823": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "dummy1b",
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/Subnet"
+   }
+  },
+  "PlatformVpcpublicSubnet2RouteTable9D856965": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/RouteTable"
+   }
+  },
+  "PlatformVpcpublicSubnet2RouteTableAssociationD3C788C2": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "PlatformVpcpublicSubnet2RouteTable9D856965"
+    },
+    "SubnetId": {
+     "Ref": "PlatformVpcpublicSubnet2Subnet2ABB7823"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/RouteTableAssociation"
+   }
+  },
+  "PlatformVpcpublicSubnet2DefaultRouteA1671921": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "PlatformVpcIGW4C5CFB82"
+    },
+    "RouteTableId": {
+     "Ref": "PlatformVpcpublicSubnet2RouteTable9D856965"
+    }
+   },
+   "DependsOn": [
+    "PlatformVpcVPCGW2BE82C10"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/DefaultRoute"
+   }
+  },
+  "PlatformVpcprivateSubnet1Subnet958F3409": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "dummy1a",
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/Subnet"
+   }
+  },
+  "PlatformVpcprivateSubnet1RouteTableF1601BC5": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/RouteTable"
+   }
+  },
+  "PlatformVpcprivateSubnet1RouteTableAssociation2D0B0C75": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "PlatformVpcprivateSubnet1RouteTableF1601BC5"
+    },
+    "SubnetId": {
+     "Ref": "PlatformVpcprivateSubnet1Subnet958F3409"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/RouteTableAssociation"
+   }
+  },
+  "PlatformVpcprivateSubnet1DefaultRouteF9A166F3": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "PlatformVpcpublicSubnet1NATGatewayA2FC8EEB"
+    },
+    "RouteTableId": {
+     "Ref": "PlatformVpcprivateSubnet1RouteTableF1601BC5"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/DefaultRoute"
+   }
+  },
+  "PlatformVpcprivateSubnet2Subnet12851D88": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": "dummy1b",
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/Subnet"
+   }
+  },
+  "PlatformVpcprivateSubnet2RouteTable5471511E": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/RouteTable"
+   }
+  },
+  "PlatformVpcprivateSubnet2RouteTableAssociationAC048204": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "PlatformVpcprivateSubnet2RouteTable5471511E"
+    },
+    "SubnetId": {
+     "Ref": "PlatformVpcprivateSubnet2Subnet12851D88"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/RouteTableAssociation"
+   }
+  },
+  "PlatformVpcprivateSubnet2DefaultRouteF419EC05": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "PlatformVpcpublicSubnet1NATGatewayA2FC8EEB"
+    },
+    "RouteTableId": {
+     "Ref": "PlatformVpcprivateSubnet2RouteTable5471511E"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/DefaultRoute"
+   }
+  },
+  "PlatformVpcIGW4C5CFB82": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/IGW"
+   }
+  },
+  "PlatformVpcVPCGW2BE82C10": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "PlatformVpcIGW4C5CFB82"
+    },
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/VPCGW"
+   }
+  },
+  "PlatformVpcS3Endpoint6BB1212E": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "RouteTableIds": [
+     {
+      "Ref": "PlatformVpcprivateSubnet1RouteTableF1601BC5"
+     },
+     {
+      "Ref": "PlatformVpcprivateSubnet2RouteTable5471511E"
+     },
+     {
+      "Ref": "PlatformVpcpublicSubnet1RouteTableBF5FEE70"
+     },
+     {
+      "Ref": "PlatformVpcpublicSubnet2RouteTable9D856965"
+     }
+    ],
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".s3"
+      ]
+     ]
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcEndpointType": "Gateway",
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/S3Endpoint/Resource"
+   }
+  },
+  "PlatformVpcCloudWatchLogsEndpointSecurityGroupB92FF18B": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Day0CloudKit-stack/PlatformVpc/Vpc/CloudWatchLogsEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "PlatformVpcBDB22E16",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "PlatformVpcBDB22E16",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/CloudWatchLogsEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "PlatformVpcCloudWatchLogsEndpoint276B5AE4": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "PlatformVpcCloudWatchLogsEndpointSecurityGroupB92FF18B",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.logs",
+    "SubnetIds": [
+     {
+      "Ref": "PlatformVpcprivateSubnet1Subnet958F3409"
+     },
+     {
+      "Ref": "PlatformVpcprivateSubnet2Subnet12851D88"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/CloudWatchLogsEndpoint/Resource"
+   }
+  },
+  "PlatformVpcSecretsManagerEndpointSecurityGroupDC0EC180": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Day0CloudKit-stack/PlatformVpc/Vpc/SecretsManagerEndpoint/SecurityGroup",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "0.0.0.0/0",
+      "Description": "Allow all outbound traffic by default",
+      "IpProtocol": "-1"
+     }
+    ],
+    "SecurityGroupIngress": [
+     {
+      "CidrIp": {
+       "Fn::GetAtt": [
+        "PlatformVpcBDB22E16",
+        "CidrBlock"
+       ]
+      },
+      "Description": {
+       "Fn::Join": [
+        "",
+        [
+         "from ",
+         {
+          "Fn::GetAtt": [
+           "PlatformVpcBDB22E16",
+           "CidrBlock"
+          ]
+         },
+         ":443"
+        ]
+       ]
+      },
+      "FromPort": 443,
+      "IpProtocol": "tcp",
+      "ToPort": 443
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/SecretsManagerEndpoint/SecurityGroup/Resource"
+   }
+  },
+  "PlatformVpcSecretsManagerEndpoint39B54680": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "PrivateDnsEnabled": true,
+    "SecurityGroupIds": [
+     {
+      "Fn::GetAtt": [
+       "PlatformVpcSecretsManagerEndpointSecurityGroupDC0EC180",
+       "GroupId"
+      ]
+     }
+    ],
+    "ServiceName": "com.amazonaws.us-east-1.secretsmanager",
+    "SubnetIds": [
+     {
+      "Ref": "PlatformVpcprivateSubnet1Subnet958F3409"
+     },
+     {
+      "Ref": "PlatformVpcprivateSubnet2Subnet12851D88"
+     }
+    ],
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/Vpc"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "VpcEndpointType": "Interface",
+    "VpcId": {
+     "Ref": "PlatformVpcBDB22E16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/Vpc/SecretsManagerEndpoint/Resource"
+   }
+  },
+  "PlatformVpcVpcFlowLogsGroup419E50D5": {
+   "Type": "AWS::Logs::LogGroup",
+   "Properties": {
+    "RetentionInDays": 7,
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/VpcFlowLogsGroup/Resource"
+   }
+  },
+  "PlatformVpcVpcFlowLogsRole3F885EF5": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "vpc-flow-logs.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/VpcFlowLogsRole/Resource"
+   }
+  },
+  "PlatformVpcVpcFlowLogsRoleDefaultPolicy5FD422E0": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "logs:CreateLogStream",
+        "logs:DescribeLogStreams",
+        "logs:PutLogEvents"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::GetAtt": [
+         "PlatformVpcVpcFlowLogsGroup419E50D5",
+         "Arn"
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "PlatformVpcVpcFlowLogsRoleDefaultPolicy5FD422E0",
+    "Roles": [
+     {
+      "Ref": "PlatformVpcVpcFlowLogsRole3F885EF5"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/VpcFlowLogsRole/DefaultPolicy/Resource"
+   }
+  },
+  "PlatformVpcVpcFlowLogsFlowLogF062DA30": {
+   "Type": "AWS::EC2::FlowLog",
+   "Properties": {
+    "DeliverLogsPermissionArn": {
+     "Fn::GetAtt": [
+      "PlatformVpcVpcFlowLogsRole3F885EF5",
+      "Arn"
+     ]
+    },
+    "LogDestinationType": "cloud-watch-logs",
+    "LogGroupName": {
+     "Ref": "PlatformVpcVpcFlowLogsGroup419E50D5"
+    },
+    "ResourceId": {
+     "Ref": "PlatformVpcBDB22E16"
+    },
+    "ResourceType": "VPC",
+    "Tags": [
+     {
+      "Key": "Environment",
+      "Value": "dev"
+     },
+     {
+      "Key": "ManagedBy",
+      "Value": "CDK"
+     },
+     {
+      "Key": "Name",
+      "Value": "Day0CloudKit-stack/PlatformVpc/VpcFlowLogs"
+     },
+     {
+      "Key": "Owner",
+      "Value": "pkapant4@gmail.com"
+     },
+     {
+      "Key": "Platform",
+      "Value": "Day0CloudKit"
+     },
+     {
+      "Key": "Project",
+      "Value": "Day0CloudKit"
+     }
+    ],
+    "TrafficType": "ALL"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/PlatformVpc/VpcFlowLogs/FlowLog"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOwW7CMBBEv4W7cUtQPwBSipBQGwXEtXKcTTAYO7LXRJGVf6/spEl7mrez4/UkNHlb09WCtXbJy/tSioL6EzJ+J2mlvhw2Dglr7bcvXFkDWppWahuR2DX1W8fvgCSakQbJtBS8m+1h7gmX2pVomJDUn4OESISeCPagPtcSghd1vjK916oSNfVppdKIzjAUWuXAtSnBhOw7SPEE06VXphTIngBPqL80PCwvWUoyV0jBT65QQ/OZcu0QzqwYOgz+7G2s1VzE/6ZwgN0hC/LJcM8QWtaRzIgnQ5gPHxSCUTAFhibjtEFk/PoAhWR0Lg3fqbLRQuEYncZ4qWIc/mZOwJ0R2O2Ndk2s/s/4kLo96josRuyJ1LWl/qjr6c0v9z3JwWpnOPRE6RLozb48k4SuEvq6uFkhlsYpFA+g+aA/0HQkiEUCAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "Day0CloudKit-stack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

@@ -1,0 +1,778 @@
+{
+  "/Day0CloudKit-stack": [
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    },
+    {
+      "type": "aws:cdk:error",
+      "data": "Could not assume role in target account using current credentials (which are for account 691427020199) Roles may not be assumed by root accounts. . Please make sure that this role exists in the account. If it doesn't exist, (re)-bootstrap the environment with the right '--trust', using the latest version of the CDK CLI.",
+      "trace": [
+        "Annotations.addMessage (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:2399)",
+        "Annotations.addError (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1631)",
+        "Annotations._addTrackableError (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\annotations.js:1:1730)",
+        "Function.getValue (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\context-provider.js:2:1886)",
+        "PlatformStack.get availabilityZones [as availabilityZones] (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\stack.js:1:12163)",
+        "new Vpc2 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:18274)",
+        "new Vpc2 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\core\\lib\\prop-injectable.js:1:855)",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "Object.<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
+        "Module.m._compile (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\index.ts:1618:23)",
+        "node:internal/modules/cjs/loader:1708:10",
+        "Object.require.extensions.<computed> [as .ts] (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\index.ts:1621:12)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "phase4 (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:649:14)",
+        "bootstrap (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:95:10)",
+        "main (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:55:10)",
+        "Object.<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\ts-node\\src\\bin.ts:800:3)",
+        "Module._compile (node:internal/modules/cjs/loader:1565:14)",
+        "Object.<anonymous> (node:internal/modules/cjs/loader:1708:10)",
+        "Module.load (node:internal/modules/cjs/loader:1318:32)",
+        "Function._load (node:internal/modules/cjs/loader:1128:12)",
+        "TracingChannel.traceSync (node:diagnostics_channel:322:14)",
+        "wrapModuleLoad (node:internal/modules/cjs/loader:219:24)",
+        "Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:170:5)",
+        "node:internal/main/run_main_module:36:49"
+      ]
+    },
+    {
+      "type": "aws:cdk:error-code",
+      "data": "ContextProviderError"
+    },
+    {
+      "type": "aws:cdk:stack-tags",
+      "data": [
+        {
+          "key": "Environment",
+          "value": "dev"
+        },
+        {
+          "key": "ManagedBy",
+          "value": "CDK"
+        },
+        {
+          "key": "Owner",
+          "value": "pkapant4@gmail.com"
+        },
+        {
+          "key": "Platform",
+          "value": "Day0CloudKit"
+        },
+        {
+          "key": "Project",
+          "value": "Day0CloudKit"
+        }
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/EnvironmentName": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EnvironmentName"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:26:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/Region": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Region"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:30:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/VpcId": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "VpcId"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:52:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/BootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "BootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:19:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/CheckBootstrapVersion": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CheckBootstrapVersion"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:19:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/MonthlyBudgetAlert/MonthlyBudget": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "MonthlyBudgetAlertMonthlyBudget57FF2E37"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new BudgetAlert (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\finops\\budget-alert.ts:13:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:34:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/ConfigBaseline/ConfigurationRecorder": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBaselineConfigurationRecorderE2CDCF31"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:20:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/ConfigBaseline/DeliveryChannel": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBaselineDeliveryChannelEF3301F3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:29:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/CDKMetadata/Default": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CDKMetadata"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...App.synth in aws-cdk-lib...",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:19:5)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/CentralLoggingBucket/AuditLogsBucket/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CentralLoggingBucketAuditLogsBucket6462B59F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:11:19)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:39:27)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/CloudTrailBaseline/OrganizationTrail/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CloudTrailBaselineOrganizationTrailC762AC9E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Trail2 in aws-cdk-lib...",
+        "new CloudTrailBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\cloudtrail-baseline.ts:14:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:40:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/ConfigBaseline/ConfigRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ConfigBaselineConfigRoleFF7DC6F6"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new ConfigBaseline (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\security\\config-baseline.ts:12:18)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:44:5)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcBDB22E16"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/IGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcIGW4C5CFB82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/VPCGW": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcVPCGW2BE82C10"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/VpcFlowLogsGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcVpcFlowLogsGroup419E50D5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new LogGroup2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:38:26)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/VpcFlowLogsRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcVpcFlowLogsRole3F885EF5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Role2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:42:25)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/VpcFlowLogs/FlowLog": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcVpcFlowLogsFlowLogF062DA30"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new FlowLog2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:48:5)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/CentralLoggingBucket/AuditLogsBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "CentralLoggingBucketAuditLogsBucketPolicyE5927FBA"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Bucket2 in aws-cdk-lib...",
+        "new LoggingBucket (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\shared\\storage\\logging-bucket.ts:11:19)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:39:27)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1Subnet18547395"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1RouteTableBF5FEE70"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1RouteTableAssociation153551D3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1DefaultRouteBD56DFC4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/EIP": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1EIP36F023B8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet1/NATGateway": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet1NATGatewayA2FC8EEB"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet2Subnet2ABB7823"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet2RouteTable9D856965"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet2RouteTableAssociationD3C788C2"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:257 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/publicSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcpublicSubnet2DefaultRouteA1671921"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:197 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet1Subnet958F3409"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet1RouteTableF1601BC5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet1RouteTableAssociation2D0B0C75"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet1/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet1DefaultRouteF9A166F3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/Subnet": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet2Subnet12851D88"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/RouteTable": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet2RouteTable5471511E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/RouteTableAssociation": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet2RouteTableAssociationAC048204"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...D:\\platform-infra\\day0-cloudkit-platform-infra\\node_modules\\aws-cdk-lib\\aws-ec2\\lib\\vpc.js:1:260 in aws-cdk-lib...",
+        "Array.forEach (:)",
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/privateSubnet2/DefaultRoute": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcprivateSubnet2DefaultRouteF419EC05"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Vpc2 in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:16:16)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/S3Endpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcS3Endpoint6BB1212E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addGatewayEndpoint in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:59:14)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/CloudWatchLogsEndpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcCloudWatchLogsEndpoint276B5AE4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:63:14)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/SecretsManagerEndpoint/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcSecretsManagerEndpoint39B54680"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:67:14)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/VpcFlowLogsRole/DefaultPolicy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcVpcFlowLogsRoleDefaultPolicy5FD422E0"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.grantWrite in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:46:18)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/CloudWatchLogsEndpoint/SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcCloudWatchLogsEndpointSecurityGroupB92FF18B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:63:14)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ],
+  "/Day0CloudKit-stack/PlatformVpc/Vpc/SecretsManagerEndpoint/SecurityGroup/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "PlatformVpcSecretsManagerEndpointSecurityGroupDC0EC180"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addInterfaceEndpoint in aws-cdk-lib...",
+        "new PlatformVpc (D:\\platform-infra\\day0-cloudkit-platform-infra\\packages\\networking\\platform-vpc.ts:67:14)",
+        "new PlatformStack (D:\\platform-infra\\day0-cloudkit-platform-infra\\lib\\platform-stack.ts:47:25)",
+        "<anonymous> (D:\\platform-infra\\day0-cloudkit-platform-infra\\bin\\platform-infra.ts:10:1)",
+        "...node internals, ts-node, ts-node, ts-node..."
+      ]
+    }
+  ]
+}
