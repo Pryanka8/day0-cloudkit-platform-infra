@@ -1,5 +1,6 @@
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as cdk from "aws-cdk-lib";
+import * as iam from "aws-cdk-lib/aws-iam";
 import { Construct } from "constructs";
 
 export class LoggingBucket extends Construct {
@@ -29,5 +30,20 @@ export class LoggingBucket extends Construct {
 
       removalPolicy: cdk.RemovalPolicy.RETAIN,
     });
+    this.bucket.addToResourcePolicy(
+      new iam.PolicyStatement({
+        principals: [new iam.ServicePrincipal("config.amazonaws.com")],
+
+        actions: ["s3:GetBucketAcl", "s3:PutObject"],
+
+        resources: [this.bucket.bucketArn, `${this.bucket.bucketArn}/*`],
+
+        conditions: {
+          StringEquals: {
+            "s3:x-amz-acl": "bucket-owner-full-control",
+          },
+        },
+      }),
+    );
   }
 }

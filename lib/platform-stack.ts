@@ -43,7 +43,9 @@ export class PlatformStack extends cdk.Stack {
 
     new ConfigBaseline(this, "ConfigBaseline", {
       accountId: config.accountId,
+      loggingBucket: loggingBucket.bucket,
     });
+
     const platformVpc = new PlatformVpc(this, "PlatformVpc", {
       cidr: config.networking.cidr,
       maxAzs: config.networking.maxAzs,
